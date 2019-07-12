@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+        content="width=device-width, initial-scale=1.0, max-scale=1.0, user-scalble=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>touch事件</title>
+
+    <style type="text/css">
+        .content {
+            width: 300px;
+            height: 300px;
+
+            background-color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="content"></div>
+
+    <script type="text/javascript">
+        let content = document.querySelector(".content");
+        
+        content.addEventListener("touchstart", (event) => {
+            console.log("touchstart");
+
+            console.log(event);
+        });
+        content.addEventListener("touchend", (event) => {
+            console.log("touchend");
+        });
+        content.addEventListener("touchmove", (event) => {
+            console.log("touchmove");
+        });
+
+
+    </script>
+</body>
+</html>
