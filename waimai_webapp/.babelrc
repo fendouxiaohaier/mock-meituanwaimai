@@ -1,0 +1,13 @@
+{
+    "presets": [["@babel/preset-env", {
+        //这个配置可以达到按需引入polyfill,不需要把polly整个都打包到代码中，根据代码按需转译
+        "useBuiltIns": "usage", 
+        // core-js@３和core-js@２二选一
+        //"corejs": 3,  //npm i --save core-js@３
+        "corejs": 2,  //npm i --save core-js@2
+
+    }], ["@babel/preset-react"]],  // 解析JSX语法
+    
+    // class中使用箭头函数赋值
+    "plugins": ["@babel/plugin-proposal-class-properties", "@babel/plugin-syntax-dynamic-import"]
+}
