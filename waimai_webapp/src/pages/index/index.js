@@ -2,6 +2,7 @@
 import "../../reset.css";
 import "../../static/iconfont/iconfont.css";
 import "../../static/iconfont/iconfont";
+import "../../static/rem";
 
 import React, { PureComponent } from "react";
 import ReactDOM from "react-dom";

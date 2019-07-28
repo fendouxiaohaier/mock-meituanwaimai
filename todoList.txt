@@ -3,3 +3,5 @@
     tabClick切换activetabName
     webpack resolve配置
     下载fonticon图标，使用多色彩
+    移动端适配解决方案，flexible
+    rem配置
