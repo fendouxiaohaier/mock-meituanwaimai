@@ -5,3 +5,4 @@
     下载fonticon图标，使用多色彩
     移动端适配解决方案，flexible
     rem配置
+    sass-resources-loader的使用，实现全局变量，全局方法的引入

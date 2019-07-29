@@ -81,7 +81,14 @@ module.exports = {
                     "style-loader",
                     "css-loader",
                     "postcss-loader",
-                    "sass-loader"
+                    "sass-loader",
+                    {
+                        loader: 'sass-resources-loader',
+                        options: {
+                            // Provide path to the file with resources
+                            resources: path.resolve(srcDir, "./common/common.scss"),
+                        },
+                    }
                 ]
             },
             {
