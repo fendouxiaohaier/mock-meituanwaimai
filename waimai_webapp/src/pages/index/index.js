@@ -4,16 +4,17 @@ import "../../static/iconfont/iconfont.css";
 import "../../static/iconfont/iconfont";
 import "../../static/rem";
 
-import React, { PureComponent } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 
 import { Provider } from "react-redux";
 import store from "./store/";
 
-import Main from "./Main/";
+import Conatiner from "./Main/Container";
+
 ReactDOM.render(
     <Provider store={store}>
-        <Main/>
+        <Conatiner/>
     </Provider>,
 
     document.querySelector("#root")

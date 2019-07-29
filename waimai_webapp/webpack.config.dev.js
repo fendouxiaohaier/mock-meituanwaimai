@@ -1,3 +1,5 @@
+const webpack = require("webpack");
+
 const path = require("path");
 const fs = require("fs");
 
@@ -109,6 +111,7 @@ module.exports = {
 
     plugins: [
         new CleanWebpackPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
     ].concat(htmlArray),
 
     devServer: {

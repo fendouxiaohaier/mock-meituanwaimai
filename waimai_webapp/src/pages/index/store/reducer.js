@@ -8,7 +8,7 @@ const defaultState = fromJS({
     buttonTabs: [
         {
             key: "home",
-            name: "首页",
+            name: "首页2",
             icon: "#icon-home",
             iconActive: "#icon-home-copy",
         },

@@ -6,3 +6,7 @@
     移动端适配解决方案，flexible
     rem配置
     sass-resources-loader的使用，实现全局变量，全局方法的引入
+
+2019-07-29 
+    eslint配置（未完成）
+    热更新：webpack-HRM react-hot-loader,分为React组件的热更新和redux的热更新
