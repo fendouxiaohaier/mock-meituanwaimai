@@ -8,14 +8,5 @@ const store = createStore(reducer, composeEnhancers(
     applyMiddleware(thunk)
 ));
 
-/**
- * redux 热更新步骤
- */
-if(module.hot) {
-    module.hot.accept("./reducer", () => {
-        const nextReducer = require("./reducer.js").default;
-        store = store.replaceReducer(nextReducer);
-    })
-}
 
 export default store;

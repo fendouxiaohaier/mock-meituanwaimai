@@ -10,11 +10,11 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import store from "./store/";
 
-import Conatiner from "./Main/Container";
+import Main from "./Main/";
 
 ReactDOM.render(
     <Provider store={store}>
-        <Conatiner/>
+        <Main/>
     </Provider>,
 
     document.querySelector("#root")
