@@ -3,7 +3,7 @@ import "./index.scss";
 import React from "react";
 import { connect } from "react-redux";
 
-import * as actionCreators from "./actionCreators";
+import * as actionCreators from "./store/actionCreators";
 
 /**
  * @constructor ButtonBar
@@ -69,8 +69,8 @@ class ButtonBar extends React.PureComponent {
 }
 
 const stateMap = (state) => ({
-    buttonTabs: state.get("buttonTabs").toJS(),
-    activeTabKey: state.get("activeTabKey"),
+    buttonTabs: state.getIn(["buttonBar", "buttonTabs"]).toJS(),
+    activeTabKey: state.getIn(["buttonBar", "activeTabKey"]),
 });
 
 export const dispatchMap = (dispatch) => ({

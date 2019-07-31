@@ -9,4 +9,8 @@
 
 2019-07-29 
     eslint配置（未完成）
-    热更新：webpack-HRM react-hot-loader,分为React组件的热更新和redux的热更新
+    热更新：webpack-HRM /react-hot-loader,分为React组件的热更新和redux的热更新
+
+07-31
+    header的开发
+    object-fit属性

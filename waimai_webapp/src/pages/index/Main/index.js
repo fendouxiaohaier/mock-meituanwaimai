@@ -1,6 +1,8 @@
 import React from "react";
 
 import ButtonBar from "../components/ButtonBar/";
+import Home from "../components/Home/";
+
 
 /**
  * @constructor Main 
@@ -11,7 +13,10 @@ class Main extends React.PureComponent {
 
     render() {
         return (
-            <ButtonBar />
+            <>
+                <Home />
+                <ButtonBar />
+            </>
         );
     }
 }

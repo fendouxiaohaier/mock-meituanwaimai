@@ -1,39 +1,9 @@
-import { fromJS } from "immutable";
+import { combineReducers } from "redux-immutable";
 
-import * as constants from "./constants";
+import buttonBarReducer from "../components/ButtonBar/store/reducer";
 
-import * as buttonBarReducer from "../components/ButtonBar/reducer";
-
-const defaultState = fromJS({
-    buttonTabs: [
-        {
-            key: "home",
-            name: "首页2",
-            icon: "#icon-home",
-            iconActive: "#icon-home-copy",
-        },
-        {
-            key: "order",
-            name: "订单",
-            icon: "#icon-order",
-            iconActive: "#icon-order-copy",
-        },
-        {
-            key: "my",
-            name: "我的",
-            icon: "#icon-mygroup",
-            iconActive: "#icon-mygroup-copy"
-        }
-    ],
-    activeTabKey: "home",
+const reducer = combineReducers({
+    buttonBar: buttonBarReducer
 });
 
-export default (state = defaultState, action) => {
-    switch (action.type) {
-        case constants.CHANGE_ACTIVE_TAB: 
-            return buttonBarReducer.changeActiveTab(state, action);
-    
-        default:
-            return state;
-    }
-}
+export default reducer;

@@ -4,6 +4,9 @@ import React from "react";
 
 import Main from "./index";
 
+/**
+ * 用于React热更新
+ */
 class Container extends React.Component {
     render() {
         return (<Main/>);
