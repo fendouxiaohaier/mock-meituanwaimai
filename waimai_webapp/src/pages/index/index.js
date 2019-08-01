@@ -1,7 +1,7 @@
 // 引入全局初始化样式
 import "../../reset.css";
 import "../../static/iconfont/iconfont.css";
-import "../../static/iconfont/iconfont";
+import "../../static/iconfont/iconfont.js";
 import "../../static/rem";
 
 import React from "react";
