@@ -18,3 +18,8 @@
 08-01
     heander中search-bar的开发
     地址显示图标及搜索按钮
+
+    实现分类组件
+    使用immutable时，在mapState中先不要把对象toJS(),因为toJS()后，
+    会生成新的对象，在render时还会执行，要不然PureComponent不生效
+    应该在render里toJS(),

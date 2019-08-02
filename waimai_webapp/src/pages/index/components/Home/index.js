@@ -1,12 +1,14 @@
 import React, { PureComponent } from 'react';
 
-import Heade from "./Header/";
+import Header from "./Header/";
+import Category from "./Category/";
 
 class Home extends PureComponent {
     render() {
         return (
             <div>
-                <Heade />
+                <Header />
+                <Category />
             </div>
         );
     }

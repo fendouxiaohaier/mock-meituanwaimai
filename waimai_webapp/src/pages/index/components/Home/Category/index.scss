@@ -1,0 +1,22 @@
+.category-content {
+    display: flex;
+    flex-wrap: wrap;
+
+    width: 100%;
+    margin-top: px2rem(14px);
+    font-size: px2rem(13px);
+
+    .category-item {
+        width: 25%;
+
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+
+        .item-icon {
+            .icon-img {
+                width: px2rem(47px);
+            }
+        }
+    }
+}
