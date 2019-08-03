@@ -5,6 +5,12 @@ import { connect } from "react-redux";
 
 import * as actionCreators from "../store/actionCreators";
 
+/**
+ * @constructor <Category>
+ * 
+ * @description 分类查询组件
+ */
+
 class Category extends PureComponent {
    
     render() {
@@ -38,7 +44,7 @@ class Category extends PureComponent {
 
     getCountCategory(categorys, count) {
         categorys = categorys.toJS();
-        
+
         if(categorys.length <= count) {
             return categorys;
         }

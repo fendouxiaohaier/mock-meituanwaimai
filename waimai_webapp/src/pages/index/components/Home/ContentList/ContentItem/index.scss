@@ -1,0 +1,81 @@
+.list-item {
+    display: flex;
+    
+    padding-bottom: 20px;
+    border-bottom: 0.5px solid #e4e4e4;;
+    margin-bottom: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
+
+    .item-brand-img {
+        position: relative;
+
+        .brand-poi-type-icon {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 36px;
+            height: 18px;
+        }
+
+        & > img {
+            width: 86px;
+            height: 65px;
+            object-fit: fill;
+        }
+    }
+    
+    .item-info {
+        flex-grow: 1;
+        margin-left: 10px;
+
+        .info-name {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .info-sale, .info-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+
+            margin-top: 10px;
+            font-size: 12px;
+            color: rgba(0,0,0,0.8);
+
+        }
+
+        .sale-score {
+            color: rgba(254, 255, 45, 0.82);
+            font-size: 16px;
+        }
+
+        .mt-deliver-icon {
+            background-color: #ffd161;
+            padding: px2rem(3px);
+            border-radius: px2rem(3px);
+        }
+
+        .info-discounts {
+            font-size: 12px;
+            margin-top: 10px;
+            overflow: hidden;
+
+            .discount-desc {
+                margin-top: 8px;
+
+                .discount-icon {
+                    width: 14px;
+                    height: 14px;
+                }
+
+                .discount-info {
+                    vertical-align: 2px;
+                }
+            }
+
+        }
+
+    }
+}

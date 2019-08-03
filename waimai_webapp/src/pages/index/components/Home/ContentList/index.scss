@@ -1,0 +1,31 @@
+.content-list {
+    margin-top: 20px;
+
+    .list-title {
+        text-align: center;
+        font-size: 16px;
+        
+        .title-text {
+            position: relative;
+    
+            &:before, &:after {
+                content: "";
+                display: inline-block;
+                height:1px;
+                width: 40px;
+                background-color: #001;
+                vertical-align: middle;
+                transform: scaleY(0.5);
+            }
+
+            &:before {
+                margin-right: 5px;
+            }
+            
+            &:after {
+                margin-left: 5px;
+            }
+        }
+    }
+
+}

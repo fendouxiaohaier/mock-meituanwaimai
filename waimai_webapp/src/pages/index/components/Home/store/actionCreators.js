@@ -13,3 +13,19 @@ export const getFetchHeadAction = () => (dispatch) => {
         })
     });
 }
+
+export const getFetchContetListAction = () => (dispatch) => {
+    axios({
+        url: "/json/contentList.json",
+        method: "GET",
+    }).then((res) => {
+
+        dispatch({
+            type: constants.FETCH_CONTENT_LIST,
+            payload: res.data.data.poilist
+        });
+
+    }).catch((error) =>{
+        throw error;
+    })
+}
