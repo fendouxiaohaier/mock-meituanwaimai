@@ -13,7 +13,13 @@ const reducer = (state = defaultState, action) => {
             return state.set("categorys", fromJS(action.payload.primary_filter));
         
         case constants.FETCH_CONTENT_LIST:
-            return state.set("contentList", fromJS(action.payload));
+            {
+                let contentList = state.get("contentList").toJS();
+
+                Array.prototype.push.apply(contentList, action.payload);
+
+                return state.set("contentList", fromJS(contentList));
+            }
             
         default:
             return state
