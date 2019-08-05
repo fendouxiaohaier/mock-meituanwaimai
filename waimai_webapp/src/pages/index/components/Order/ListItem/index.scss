@@ -1,0 +1,102 @@
+.order-item {
+    width: 100%;
+    border-top: 12px solid rgba(204, 204, 204, 0.31);
+
+
+    .item-content {
+        width: 100%;
+        padding-top: 12px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #ccc;
+        display: flex;
+
+
+        .item-img {
+            margin-left: 14px;
+            margin-right: 14px;
+
+            & > img {
+                width: 47px;
+                height: 47px;
+                border-radius: 50%;
+            }
+        }
+
+        .item-info {
+            flex-grow: 1;
+            
+            .info-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                height: 47px;
+                border-bottom: 1px solid #ccc;
+
+                .header-name {
+                    width: 165px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    font-size: 24px;
+                    font-weight: bold;
+                }
+                
+                .header-arrow {
+                    width: 12px;
+                    height: 12px;
+                    border-top: 1px solid #ccc;
+                    border-right: 1px solid #ccc;
+                    transform: rotate(45deg);
+                }
+
+                .header-status {
+                    padding-right: 20px;
+                    font-size: 16px;
+                    color: #ababab;
+                }
+            }
+
+            .info-product-list {
+                font-size: 18px;
+                padding-right: 20px;
+
+                .product-list {
+                    display: flex;
+                    justify-content: space-between;
+                    line-height: 32px;
+
+                    .product-name {
+                        width: 240px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+                }
+            }
+            
+            .info-totle {
+                display: flex;
+                justify-content: space-between;
+                font-size: 14px;
+                line-height: 28px;
+                padding-right: 20px;
+            }
+        }
+    }
+
+    .item-comment {
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 20px;
+
+        .comment-btn {
+            width: 96px;
+            height: 28px;
+            margin-top: 12px;
+            margin-bottom: 12px;
+            border: none;
+            background-color: #ffb500;
+        }
+    }
+}

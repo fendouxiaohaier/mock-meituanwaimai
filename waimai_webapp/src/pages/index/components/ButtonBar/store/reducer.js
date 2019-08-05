@@ -23,7 +23,7 @@ const defaultState = fromJS({
             iconActive: "#icon-mygroup-copy"
         }
     ],
-    activeTabKey: "home",
+    activeTabKey: "order",
 });
 
 export default (state = defaultState, action) => {
