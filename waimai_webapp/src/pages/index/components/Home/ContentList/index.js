@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import * as actionCreators from "../store/actionCreators";
 
 import ContentItem from "./ContentItem/";
-import Loading from "../../../../../common/Loading/";
+import ScrollView from "../../../../../common/ScrollView/";
 
 /**
  * @constructor ContentList
@@ -42,16 +42,16 @@ class ContentList extends PureComponent {
                     <span className="title-text">附近商家</span>    
                 </div>
 
-                <div className="list-items">
-                    {
-                        contentList.toJS().map((content) => {
-                            return <ContentItem key={content.id} itemData={content}/>
-                        })
-                    }
 
-                </div>
-
-                <Loading isLoadEnd={this.state.isLoadEnd}/>
+                <ScrollView isLoadEnd={this.state.isLoadEnd} scrollCallBack={this.loadSrcollData}>
+                    <div className="list-items">
+                        {
+                            contentList.toJS().map((content) => {
+                                return <ContentItem key={content.id} itemData={content}/>
+                            })
+                        }
+                    </div>
+                </ScrollView>
 
             </div>
         );
@@ -59,36 +59,18 @@ class ContentList extends PureComponent {
 
     componentDidMount() {
         this.props.fetchContentList();
-
-        // 添加window的滚动事件
-        window.addEventListener("scroll", this.loadSrcollData);
-    }
-
-    componentWillUnmount() {
-         // 移除window的滚动事件
-         window.removeEventListener("scroll", this.loadSrcollData);
     }
 
     loadSrcollData() {
 
         if(this.curPage < 3) {
-            let clientHeight = document.documentElement.clientHeight,
-                scrollTop = document.documentElement.scrollTop,
-                scrollHeight = document.documentElement.scrollHeight;
-
-            let preloadDistantce = 30;
-
-            if(clientHeight+scrollTop+preloadDistantce >= scrollHeight) {
-                this.curPage++;
-                this.props.fetchContentList();
-            }
-
+            this.curPage++;
+            this.props.fetchContentList();
         } else {
             this.setState({
                 isLoadEnd: true
             });
         }
-
 
     }
 }

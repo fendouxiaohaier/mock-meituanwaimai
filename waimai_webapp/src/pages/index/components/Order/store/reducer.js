@@ -7,9 +7,12 @@ const defaultState = fromJS({
 
 const reducer = (state = defaultState, action) => {
     switch (action.type) {
-        case constants.FETCH_ORDER_DATA:
-            return state.set("orderList", fromJS(action.payload.digestlist));
-    
+        case constants.FETCH_ORDER_DATA: {
+            let orderList = state.get("orderList").toJS();
+            Array.prototype.push.apply(orderList, action.payload.digestlist);
+            return state.set("orderList", fromJS(orderList));
+        }
+        
         default:
             return state;
     }
