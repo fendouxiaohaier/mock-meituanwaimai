@@ -3,6 +3,7 @@ import React from "react";
 import ButtonBar from "../components/ButtonBar/";
 import Home from "../components/Home/";
 import Order from "../components/Order/";
+import My from "../components/My/";
 
 
 /**
@@ -15,7 +16,7 @@ class Main extends React.PureComponent {
     render() {
         return (
             <>
-                <Order />
+                <My />
                 <ButtonBar />
             </>
         );

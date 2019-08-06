@@ -1,0 +1,65 @@
+.my {
+    .my-header {
+        width: 100%;
+        height: px2rem(160px);
+        background-color: yellow;
+        text-align: center;
+        padding-top: px2rem(20px);
+
+        .avatar {
+            width: px2rem(78px);
+            height: px2rem(78px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .nickname {
+            font-size: 18px;
+            margin-top: px2rem(20px);
+        }
+    }
+
+    .my-content {
+        height: px2rem(487px);
+        background-color: rgba(204, 204, 204, 0.34);
+
+        .items {
+            padding-left: px2rem(20px);
+            border-bottom: px2rem(20px) solid rgba(204, 204, 204, 0.34);
+            background-color: #fff;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            .item {
+                height: px2rem(48px);
+                width: 100%;
+                line-height: px2rem(48px);
+
+                .arrow {
+                    float: right;
+                    font-weight: normal;
+                    margin-right: px2rem(20px);
+                }
+            }
+
+            .item:not(:last-child) {
+                border-bottom: 1px solid #ccc;
+            }
+            
+        }
+
+        .tel, .servicetime {
+            height: px2rem(48px);
+            text-align: center;
+            line-height: px2rem(48px);
+            font-size: 16px;
+        }
+
+        .tel {
+            background-color: #fff;
+            color: yellow;
+        }
+    }
+}
