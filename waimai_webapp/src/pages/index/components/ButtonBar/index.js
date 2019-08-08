@@ -2,6 +2,8 @@ import "./index.scss";
 
 import React from "react";
 import { connect } from "react-redux";
+import { NavLink } from "react-router-dom";
+
 
 import * as actionCreators from "./store/actionCreators";
 
@@ -40,15 +42,15 @@ class ButtonBar extends React.PureComponent {
                 iconID = tab.icon;
 
             if(activeTabKey === tab.key) {
-                tabItemCls += " active";
                 iconID = tab.iconActive;
             }
 
             return (
-                <div className={tabItemCls} 
-                    key={tab.key} 
-                    data-key={tab.key}
-                    onClick={this.handleChangeActiveTab}
+                <NavLink  to={`/${tab.key}`} activeClassName="active"
+                        className={tabItemCls} 
+                        key={tab.key} 
+                        data-key={tab.key}
+                        onClick={this.handleChangeActiveTab}
                 >
                     <div className="tab-icon">
                         <svg className="icon" aria-hidden="true">
@@ -56,7 +58,7 @@ class ButtonBar extends React.PureComponent {
                         </svg>
                     </div>
                     <div className="tab-name">{tab.name}</div>
-                </div>
+                </NavLink>
             )
         })
     }
