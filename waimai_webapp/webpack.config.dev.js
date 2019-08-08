@@ -16,7 +16,7 @@ function getHtmlArray(entryMap) {
         let fullPath = path.resolve(pagesDir, key+"/index.html");   // 每个page的入口html固定为index.html
 
         htmlArray.push(new HtmlWebpackPlugin({
-            fileName: key + ".html",
+            filename: key + ".html",
             template: fullPath,
             chunks: [key]
         }));
