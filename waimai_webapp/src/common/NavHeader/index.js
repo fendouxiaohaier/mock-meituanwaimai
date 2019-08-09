@@ -6,7 +6,11 @@ class NavHeader extends PureComponent {
     render() {
         return (
             <div className="nav">
-                <div className="backon-icon"></div>
+                <div className="backon-icon">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlinkHref="#icon-jiantou"></use>
+                    </svg>
+                </div>
                 <p className="title">{this.props.title}</p>
             </div>
         );
