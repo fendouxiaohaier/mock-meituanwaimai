@@ -7,7 +7,7 @@ class NavHeader extends PureComponent {
         return (
             <div className="nav">
                 <div className="backon-icon">
-                    <svg class="icon" aria-hidden="true">
+                    <svg className="icon" aria-hidden="true">
                         <use xlinkHref="#icon-jiantou"></use>
                     </svg>
                 </div>
