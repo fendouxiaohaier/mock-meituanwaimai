@@ -5,6 +5,10 @@ import { connect } from "react-redux";
 
 import * as actionCreators from "./store/actionCreators";
 
+import CategoryComponent from "./components/CategoryComponent/";
+import SortComponent from "./components/SortComponent/";
+import FilterComponent from "./components/FilterComponent/";
+
 /**
  * @constructor <Header>
  * 
@@ -23,10 +27,12 @@ class Header extends Component {
 
         let {
             items,
-            activeKey
+            activeKey,
+            filterData,
         } = this.props;
 
         items = items.toJS();
+        filterData = filterData.toJS();
 
         return (
             <div className="header">
@@ -35,16 +41,28 @@ class Header extends Component {
                         this.renderHeaderItems(items, activeKey)   
                     }
                 </div>
+
+                <div className="header-panel">
+                    <div className="header-inner-panel">
+                        {
+                            this.renderPanelContent(filterData, activeKey)
+                        }
+                    </div>
+                </div>
             </div>
         );
+    }
+
+    componentDidMount() {
+        this.props.fetchFilterData();
     }
 
     renderHeaderItems(items, activeKey) {
         return items.map((item) => (
             <div key={item.key} 
-                    className={`header-item ${item.key===activeKey?"active":""}`}
-                    data-key={item.key}
-                    onClick={this.handleTabClick}
+                className={`header-item ${item.key===activeKey?"active":""}`}
+                data-key={item.key}
+                onClick={this.handleTabClick}
             >
                 <p className="item-text">{item.text}</p>
                 <div className="item-icon"></div>
@@ -57,16 +75,34 @@ class Header extends Component {
 
         this.props.changeTab(activeKey);
     }
+
+    /**
+     * 针对不同的activeKey，渲染不同的内容组件
+     */
+    renderPanelContent(filterData, activeKey) {
+        if(activeKey === "category") {
+            return (<CategoryComponent categoryFilterList={filterData.category_filter_list}/>)
+        } else if( activeKey === "sort") {
+            return (<SortComponent sortTypeList={filterData.sort_type_list}/>);
+        } else {
+            return (<FilterComponent activityFilterList={filterData.activity_filter_list}/>);
+        }
+    }
 }
 
 const mapState = (state) => ({
     items: state.getIn(["header", "items"]),
-    activeKey: state.getIn(["header", "activeKey"])
+    activeKey: state.getIn(["header", "activeKey"]),
+    filterData: state.getIn(["header", "filterData"]),
+    
 });
 
 const mapDispatch = (dispatch) => ({
     changeTab(activeKey) {
         dispatch( actionCreators.getchangeTabAction(activeKey) )
+    },
+    fetchFilterData() {
+        dispatch( actionCreators.getFetchFilterDataAction() );
     }
 });
 

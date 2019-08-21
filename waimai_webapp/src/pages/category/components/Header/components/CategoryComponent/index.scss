@@ -1,0 +1,44 @@
+.category-filter {
+    width: 100%;
+
+    .title {
+        width: 100%;
+        height: px2rem(30px);
+        display: flex;
+        align-items: center;
+        background-color: #efefef;
+        color: #666;
+        font-size: px2rem(14px);
+
+        
+       .yellow-bar {
+           display: inline-block;
+           width: px2rem(4px);
+           height: px2rem(20px);
+           margin-right: px2rem(16px);
+           background-color: #ffd161;
+       
+       }
+    }
+
+    .cate-sub-content {
+        min-height: px2rem(20px);
+        justify-content: space-around;
+        font-size: px2rem(14px);
+        overflow: hidden;
+
+        .cate-sub-item {
+            width: 28%;
+            height: px2rem(38px);
+            line-height: px2rem(38px);
+            float: left;
+            overflow: hidden;
+            text-align: center;
+            color: #666;
+            border: 1px solid #c4c4c4;
+            margin-top: px2rem(10px);
+            margin-bottom: px2rem(10px);
+            margin-left: px2rem(12px);
+        }
+    }
+}

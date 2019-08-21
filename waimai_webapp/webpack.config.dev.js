@@ -110,7 +110,7 @@ module.exports = {
     },
 
     plugins: [
-        new CleanWebpackPlugin(),
+        // new CleanWebpackPlugin(),
         new webpack.HotModuleReplacementPlugin(),
     ].concat(htmlArray),
 

@@ -21,14 +21,19 @@ const defaultState = fromJS({
         }
     ],
 
-    activeKey: "category"
+    activeKey: "category",
+
+    filterData: {},  // 过滤数据
 });
 
 export default (state = defaultState, action) => {
     switch (action.type) {
         case constants.CHANGE_ACTIVE_KEY:
             return state.set("activeKey", action.payload);
-    
+
+        case constants.FETCH_FILTER_DATA:
+            return state.set("filterData", fromJS(action.payload));
+
         default:
             return state;
     }
