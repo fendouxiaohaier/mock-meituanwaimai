@@ -2,9 +2,12 @@ import * as constants from "../../../store/constants";
 
 import axios from "axios";
 
-export const getchangeTabAction = (activeKey) => ({
+export const getchangeTabAction = (activeKey, showHeaderPanel) => ({
     type: constants.CHANGE_ACTIVE_KEY,
-    payload: activeKey
+    payload: {
+        activeKey,
+        showHeaderPanel
+    }
 });
 
 export const getFetchFilterDataAction = () => (dispatch) =>  {

@@ -29,6 +29,7 @@ class Header extends Component {
             items,
             activeKey,
             filterData,
+            showHeaderPanel,
         } = this.props;
 
         items = items.toJS();
@@ -42,6 +43,21 @@ class Header extends Component {
                     }
                 </div>
 
+                {
+                    this.getHeaderPanel(filterData, activeKey, showHeaderPanel)
+                }
+               
+            </div>
+        );
+    }
+
+    componentDidMount() {
+        this.props.fetchFilterData();
+    }
+
+    getHeaderPanel(filterData, activeKey, showHeaderPanel) {
+        if(showHeaderPanel) {
+            return (
                 <div className="header-panel">
                     <div className="header-inner-panel">
                         {
@@ -49,12 +65,10 @@ class Header extends Component {
                         }
                     </div>
                 </div>
-            </div>
-        );
-    }
+            )
+        } 
 
-    componentDidMount() {
-        this.props.fetchFilterData();
+        return null;
     }
 
     renderHeaderItems(items, activeKey) {
@@ -73,7 +87,16 @@ class Header extends Component {
     handleTabClick(event) {
         let activeKey = event.currentTarget.dataset.key;
 
-        this.props.changeTab(activeKey);
+        let showHeaderPanel = true;
+
+        // 如果当前点击的tab是正在显示的tab，则关闭header-panel并清空activeKey
+        if(activeKey === this.props.activeKey
+            && this.props.showHeaderPanel) {
+                showHeaderPanel = false;
+                activeKey = "";
+        }
+
+        this.props.changeTab(activeKey, showHeaderPanel);
     }
 
     /**
@@ -94,12 +117,12 @@ const mapState = (state) => ({
     items: state.getIn(["header", "items"]),
     activeKey: state.getIn(["header", "activeKey"]),
     filterData: state.getIn(["header", "filterData"]),
-    
+    showHeaderPanel: state.getIn(["header", "showHeaderPanel"]),
 });
 
 const mapDispatch = (dispatch) => ({
-    changeTab(activeKey) {
-        dispatch( actionCreators.getchangeTabAction(activeKey) )
+    changeTab(activeKey, showHeaderPanel) {
+        dispatch( actionCreators.getchangeTabAction(activeKey, showHeaderPanel) )
     },
     fetchFilterData() {
         dispatch( actionCreators.getFetchFilterDataAction() );

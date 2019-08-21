@@ -21,7 +21,9 @@ const defaultState = fromJS({
         }
     ],
 
-    activeKey: "category",
+    activeKey: "",
+
+    showHeaderPanel: false,  // 是否显示header-panel面板
 
     filterData: {},  // 过滤数据
 });
@@ -29,7 +31,9 @@ const defaultState = fromJS({
 export default (state = defaultState, action) => {
     switch (action.type) {
         case constants.CHANGE_ACTIVE_KEY:
-            return state.set("activeKey", action.payload);
+            return state.merge({
+                ...action.payload,
+            });
 
         case constants.FETCH_FILTER_DATA:
             return state.set("filterData", fromJS(action.payload));
