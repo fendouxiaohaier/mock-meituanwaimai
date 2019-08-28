@@ -3,23 +3,23 @@ import { fromJS } from "immutable";
 import * as constants from "../../../store/constants";
 
 const defaultState = fromJS({
-    items: [
-        {
+    items: {
+        category: {
             key: "category",
             text: "全部品类",
-            obj: {}
+            filterID: ""
         },
-        {
+        sort:  {
             key: "sort",
             text: "综合排序",
-            obj: {}
+            filterID: ""
         },
-        {
+        filter: {
             key: "filter",
             text: "筛选",
-            obj: {}
+            filterID: ""
         }
-    ],
+    },
 
     activeKey: "",
 
@@ -37,6 +37,13 @@ export default (state = defaultState, action) => {
 
         case constants.FETCH_FILTER_DATA:
             return state.set("filterData", fromJS(action.payload));
+        
+        case constants.HANDLE_DO_FILITE: {
+            let _items = state.get("items").toJS();
+            _items[action.payload.type].filterID = action.payload.filterID;
+
+            return state.set("items", fromJS(_items));
+        }
 
         default:
             return state;

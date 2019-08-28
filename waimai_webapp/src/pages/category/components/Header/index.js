@@ -9,6 +9,8 @@ import CategoryComponent from "./components/CategoryComponent/";
 import SortComponent from "./components/SortComponent/";
 import FilterComponent from "./components/FilterComponent/";
 
+import { getFetchContetListAction } from "../Content/store/actionCreators";
+
 /**
  * @constructor <Header>
  * 
@@ -20,6 +22,8 @@ class Header extends Component {
         super(props);
 
         this.handleTabClick = this.handleTabClick.bind(this);
+        this.renderPanelContent = this.renderPanelContent.bind(this);
+        this.handleFilterContent = this.handleFilterContent.bind(this);
     }
 
 
@@ -34,17 +38,19 @@ class Header extends Component {
 
         items = items.toJS();
         filterData = filterData.toJS();
-
+        
         return (
             <div className="header">
                 <div className="header-top">
                     {
-                        this.renderHeaderItems(items, activeKey)   
+                        this.renderHeaderItems( Object.values(items), activeKey)   
                     }
                 </div>
 
                 {
-                    this.getHeaderPanel(filterData, activeKey, showHeaderPanel)
+                    showHeaderPanel 
+                    && 
+                    this.getHeaderPanel(filterData, activeKey, items)
                 }
                
             </div>
@@ -55,18 +61,16 @@ class Header extends Component {
         this.props.fetchFilterData();
     }
 
-    getHeaderPanel(filterData, activeKey, showHeaderPanel) {
-        if(showHeaderPanel) {
-            return (
-                <div className="header-panel">
-                    <div className="header-inner-panel">
-                        {
-                            this.renderPanelContent(filterData, activeKey)
-                        }
-                    </div>
+    getHeaderPanel(filterData, activeKey, items) {
+        return (
+            <div className="header-panel">
+                <div className="header-inner-panel">
+                    {
+                        this.renderPanelContent(filterData, activeKey, items)
+                    }
                 </div>
-            )
-        } 
+            </div>
+        )
 
         return null;
     }
@@ -102,14 +106,49 @@ class Header extends Component {
     /**
      * 针对不同的activeKey，渲染不同的内容组件
      */
-    renderPanelContent(filterData, activeKey) {
+    renderPanelContent(filterData, activeKey, items) {
+       
         if(activeKey === "category") {
-            return (<CategoryComponent categoryFilterList={filterData.category_filter_list}/>)
+            return (<CategoryComponent 
+                        categoryFilterList={filterData.category_filter_list}
+                        handleFilterContent={this.handleFilterContent}
+                        filterID={items[activeKey].filterID}
+                    />)
         } else if( activeKey === "sort") {
-            return (<SortComponent sortTypeList={filterData.sort_type_list}/>);
+            return (<SortComponent 
+                        sortTypeList={filterData.sort_type_list}
+                        handleFilterContent={this.handleFilterContent}
+                        filterID={items[activeKey].filterID}
+                    />);
         } else {
-            return (<FilterComponent activityFilterList={filterData.activity_filter_list}/>);
+            return (<FilterComponent 
+                        activityFilterList={filterData.activity_filter_list}
+                        handleFilterContent={this.handleFilterContent}
+                        filterID={items[activeKey].filterID}    
+                    />);
         }
+    }
+
+    handleFilterContent(event) {
+        let filterID = event.currentTarget.dataset.id;
+        let type = event.currentTarget.dataset.type;
+
+        // 当前点击的不是同一个过滤条件时，再去请求过滤后的内容数据
+        if(this.props.items.toJS()[type].filterID !== filterID) {
+
+            // 调用过滤查询借口
+            this.props.handleDoFilter(filterID, type);
+ 
+            // 从header这里点击过滤附近商家数据需要传递过滤参数，
+            // 以及把page还原为第一页
+            this.props.fetchContentList({
+                filterID,
+                toFirstPage: true
+            });
+        }
+
+        // 点击触发过滤条件后，关闭条件选择面板
+        this.props.changeTab("", false);
     }
 }
 
@@ -126,6 +165,12 @@ const mapDispatch = (dispatch) => ({
     },
     fetchFilterData() {
         dispatch( actionCreators.getFetchFilterDataAction() );
+    },
+    handleDoFilter(filterID, type) {
+        dispatch( actionCreators.getDoFilterAction(filterID, type) );
+    },
+    fetchContentList(filterParam) {
+        dispatch( getFetchContetListAction(filterParam) );
     }
 });
 

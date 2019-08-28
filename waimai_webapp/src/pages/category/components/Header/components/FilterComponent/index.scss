@@ -21,6 +21,10 @@
                 margin-bottom: 10px;
                 position: relative;
                 
+                &.active {
+                    color: #ffb000;
+                }
+
                 .choiceItemImg {
                     width: 20px;
                     position: absolute;

@@ -1,0 +1,81 @@
+.c-list-item {
+    display: flex;
+    
+    padding-bottom: px2rem(20px);
+    border-bottom: 0.5px solid #e4e4e4;;
+    margin-bottom: px2rem(20px);
+    margin-left: px2rem(15px);
+    margin-right: px2rem(15px);
+
+    .item-brand-img {
+        position: relative;
+
+        .brand-poi-type-icon {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: px2rem(36px);
+            height: px2rem(18px);
+        }
+
+        & > img {
+            width: px2rem(86px);
+            height: px2rem(65px);
+            object-fit: fill;
+        }
+    }
+    
+    .item-info {
+        flex-grow: 1;
+        margin-left: px2rem(10px);
+
+        .info-name {
+            font-size: px2rem(16px);
+            font-weight: bold;
+        }
+
+        .info-sale, .info-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+
+            margin-top: px2rem(10px);
+            font-size: px2rem(12px);
+            color: rgba(0,0,0,0.8);
+
+        }
+
+        .sale-score {
+            color: rgba(254, 255, 45, 0.82);
+            font-size: px2rem(16px);
+        }
+
+        .mt-deliver-icon {
+            background-color: #ffd161;
+            padding: px2rem(3px);
+            border-radius: px2rem(3px);
+        }
+
+        .info-discounts {
+            font-size: px2rem(12px);
+            margin-top: px2rem(10px);
+            overflow: hidden;
+
+            .discount-desc {
+                margin-top: px2rem(8px);
+
+                .discount-icon {
+                    width: px2rem(14px);
+                    height: px2rem(14px);
+                }
+
+                .discount-info {
+                    vertical-align: 2px;
+                }
+            }
+
+        }
+
+    }
+}

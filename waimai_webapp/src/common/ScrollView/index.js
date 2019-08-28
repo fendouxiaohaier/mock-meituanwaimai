@@ -11,7 +11,7 @@ class ScrollView extends PureComponent {
     constructor(props) {
         super(props);
 
-        this.loadSrcollData = this.loadSrcollData.bind(this);
+        this.loadSrcollData = this.debounce(this.loadSrcollData.bind(this), 300);
     }
         
 
@@ -43,8 +43,24 @@ class ScrollView extends PureComponent {
             let preloadDistantce = 30;
 
             if(clientHeight+scrollTop+preloadDistantce >= scrollHeight) {
+                debugger;
                 this.props.scrollCallBack && this.props.scrollCallBack();
             }
+        }
+    }
+
+
+    debounce(fn, delay) {
+        let timer;
+
+        return function() {
+            let context = this,
+                args = arguments;
+
+            clearTimeout(timer);
+            timer = setTimeout(function() {
+                fn.apply(context, args)
+            }, delay);
         }
     }
 }

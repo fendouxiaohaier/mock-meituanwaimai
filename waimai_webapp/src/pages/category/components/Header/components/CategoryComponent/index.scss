@@ -39,6 +39,12 @@
             margin-top: px2rem(10px);
             margin-bottom: px2rem(10px);
             margin-left: px2rem(12px);
+
+            &.active {
+                background-color: #fffbf1;
+                color: #ffb000;
+                border-color: #ffb000;
+            }
         }
     }
 }

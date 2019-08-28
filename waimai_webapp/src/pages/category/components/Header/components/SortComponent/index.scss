@@ -10,6 +10,12 @@
             line-height: px2rem(44px);
             padding-left: px2rem(20px);
             border-bottom: 0.5px solid #ccc;
+
+            &.active {
+                background-color: #fffbf1;
+                color: #ffb000;
+                border-color: #ffb000;
+            }
         }
     }
 }

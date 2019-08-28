@@ -34,3 +34,11 @@ export const getFetchFilterDataAction = () => (dispatch) =>  {
 
 
 }
+
+export const getDoFilterAction = (filterID, type) => ({
+    type: constants.HANDLE_DO_FILITE,
+    payload: {
+        filterID,
+        type
+    }
+});

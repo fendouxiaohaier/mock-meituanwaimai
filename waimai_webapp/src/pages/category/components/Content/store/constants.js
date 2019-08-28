@@ -1,0 +1,1 @@
+export const FETCH_CONTENT_LIST = "category/contentList/fetchContentList";
