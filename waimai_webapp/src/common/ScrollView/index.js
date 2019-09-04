@@ -43,7 +43,6 @@ class ScrollView extends PureComponent {
             let preloadDistantce = 30;
 
             if(clientHeight+scrollTop+preloadDistantce >= scrollHeight) {
-                debugger;
                 this.props.scrollCallBack && this.props.scrollCallBack();
             }
         }
